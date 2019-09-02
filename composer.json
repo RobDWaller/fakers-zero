@@ -3,8 +3,10 @@
     "description": "Rebuild of the original Fakers App released in 2012.",
     "type": "project",
     "require": {
-        "slim/slim": "3",
-        "doctrine/orm": "^2.6"
+        "php": ">=7.3.0",
+        "slim/slim": "^4.0",
+        "doctrine/orm": "^2.6",
+        "rbdwllr/psr-jwt": "^0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.3",
