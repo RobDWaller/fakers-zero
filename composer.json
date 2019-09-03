@@ -5,6 +5,7 @@
     "require": {
         "php": ">=7.3.0",
         "slim/slim": "^4.0",
+        "slim/psr7": "^0.5",
         "doctrine/orm": "^2.6",
         "rbdwllr/psr-jwt": "^0.2"
     },
