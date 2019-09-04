@@ -3,3 +3,4 @@ vendor
 coverage
 infection.log
 coverage.xml
+src/cache

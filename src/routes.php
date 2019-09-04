@@ -8,6 +8,6 @@ $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 $app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write("<h1>Hello Fakers!</h1>");
+    $response->getBody()->write($this->get('view')->render('home.php'));
     return $response;
 });
