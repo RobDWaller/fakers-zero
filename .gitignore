@@ -4,3 +4,4 @@ coverage
 infection.log
 coverage.xml
 src/cache
+.phpunit.result.cache
