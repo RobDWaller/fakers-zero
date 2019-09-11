@@ -7,7 +7,12 @@ $app->addRoutingMiddleware();
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
-$app->get('/', function (Request $request, Response $response) {
+$app->get('/', function(Request $request, Response $response) {
     $response->getBody()->write($this->get('view')->render('home.html'));
+    return $response;
+});
+
+$app->get('/authenticate', function(Request $request, Response $response) {
+    $response->getBody()->write('Authenticate!');
     return $response;
 });
