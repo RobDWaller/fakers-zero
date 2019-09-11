@@ -30,12 +30,11 @@ class TweetTest extends TestCase
         $this->assertEquals($tweet->getCreatedAt(), '2017-12-17 19:06:52');
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testCreatedAtBadDateString()
     {
         $tweet = new Tweet(123, 'Hello World', '4', 10, 5, true, false, 'en');
+
+        $this->expectException(\Exception::class);
 
         $tweet->getCreatedAt();
     }

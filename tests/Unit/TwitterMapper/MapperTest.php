@@ -8,7 +8,7 @@ use App\TwitterMapper\Object\Tweet;
 use App\TwitterMapper\Mapper;
 use Tests\Helper\FakeTweet;
 use Tests\Helper\FakeUser;
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class MapperTest extends TestCase
 {
@@ -29,7 +29,7 @@ class MapperTest extends TestCase
 
         $tweetCollection = $mapper->buildTweets($fakeTweet->getTweets(15));
 
-        $this->assertInstanceOf(Collection::class, $tweetCollection);
+        $this->assertInstanceOf(ArrayCollection::class, $tweetCollection);
 
         $this->assertInstanceOf(Tweet::class, $tweetCollection->first());
     }
@@ -60,7 +60,7 @@ class MapperTest extends TestCase
 
         $userCollection = $mapper->buildUsers($fakeUser->getUsers(20));
 
-        $this->assertInstanceOf(Collection::class, $userCollection);
+        $this->assertInstanceOf(ArrayCollection::class, $userCollection);
 
         $this->assertInstanceOf(User::class, $userCollection->first());
     }
@@ -73,7 +73,7 @@ class MapperTest extends TestCase
 
         $userCollection = $mapper->buildUsers($fakeUser->getUsers(20, false));
 
-        $this->assertInstanceOf(Collection::class, $userCollection);
+        $this->assertInstanceOf(ArrayCollection::class, $userCollection);
 
         $this->assertInstanceOf(User::class, $userCollection->first());
     }

@@ -4,7 +4,7 @@ namespace App\TwitterMapper;
 
 use App\TwitterMapper\Object\Tweet;
 use App\TwitterMapper\Object\User;
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Mapper
 {
@@ -22,7 +22,7 @@ class Mapper
         );
     }
 
-    public function buildTweets(array $tweets): Collection
+    public function buildTweets(array $tweets): ArrayCollection
     {
         $collectionArray = [];
 
@@ -30,7 +30,7 @@ class Mapper
             $collectionArray[] = $this->buildTweet($tweet);
         }
 
-        return new Collection($collectionArray);
+        return new ArrayCollection($collectionArray);
     }
 
     public function buildUser($user): User
@@ -61,7 +61,7 @@ class Mapper
         return $userObject;
     }
 
-    public function buildUsers(array $users): Collection
+    public function buildUsers(array $users): ArrayCollection
     {
         $collectionArray = [];
 
@@ -69,6 +69,6 @@ class Mapper
             $collectionArray[] = $this->buildUser($user);
         }
 
-        return new Collection($collectionArray);
+        return new ArrayCollection($collectionArray);
     }
 }
