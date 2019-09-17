@@ -16,3 +16,8 @@ $app->get('/authenticate', function(Request $request, Response $response) {
     $response->getBody()->write('Authenticate!');
     return $response;
 });
+
+$app->get('/env', function(Request $request, Response $response) {
+    $response->getBody()->write(getenv("FOO"));
+    return $response;
+});
