@@ -14,6 +14,7 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 require __DIR__ . '/../src/services.php';
+require __DIR__ . '/../src/middleware.php';
 require __DIR__ . '/../src/routes.php';
 
 $app->run();
