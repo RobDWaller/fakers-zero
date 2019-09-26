@@ -12,12 +12,18 @@ $app->get('/', function(Request $request, Response $response) {
     return $response;
 });
 
-$app->get('/authenticate', function(Request $request, Response $response) {
-    $response->getBody()->write('Authenticate!');
-    return $response;
+$app->post('/authenticate', function(Request $request, Response $response) use ($app) {
+    $handler = new App\Handlers\Auth\OAuthUrl(
+        new App\Aggregates\Twitter(
+            $this->get('twitter_oauth'),
+            $this->get('session'),
+            $this->get('uri')
+        )
+    );
+    return $handler->handle($request);
 });
 
 $app->get('/env', function(Request $request, Response $response) {
-    $response->getBody()->write(getenv("FOO"));
+    $response->getBody()->write(getenv("TWITTER_ACCESS_TOKEN"));
     return $response;
 });
