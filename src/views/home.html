@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Hello World!</h1>
-<form>
-    <button>Connect to Twitter</button>
+<form method="POST" action="/authenticate">
+    <input type="submit" value="Connect to Twitter" />
 </form>
 {% endblock %}
