@@ -22,8 +22,3 @@ $app->post('/authenticate', function(Request $request, Response $response) use (
     );
     return $handler->handle($request);
 });
-
-$app->get('/env', function(Request $request, Response $response) {
-    $response->getBody()->write(getenv("TWITTER_ACCESS_TOKEN"));
-    return $response;
-});
