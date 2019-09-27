@@ -15,10 +15,3 @@ $container->set('session', function () {
 $container->set('uri', function () {
     return new App\Helper\Uri;
 });
-
-$container->set('twitter_oauth', function () {
-    return new App\Twitter\TwitterOAuth(
-        new App\Twitter\OAuth\Auth(getenv('TWITTER_KEY'), getenv('TWITTER_SECRET')),
-        new App\Twitter\OAuth\Factory()
-    );
-});

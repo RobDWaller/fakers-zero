@@ -12,10 +12,32 @@ $app->get('/', function(Request $request, Response $response) {
     return $response;
 });
 
-$app->post('/authenticate', function(Request $request, Response $response) use ($app) {
+$app->post('/authenticate', function(Request $request, Response $response) {
     $handler = new App\Handlers\Auth\OAuthUrl(
         new App\Aggregates\Twitter(
-            $this->get('twitter_oauth'),
+            new App\Twitter\TwitterOAuth(
+                new App\Twitter\OAuth\Auth(getenv('TWITTER_KEY'), getenv('TWITTER_SECRET')),
+                new App\Twitter\OAuth\Factory()
+            ),
+            $this->get('session'),
+            $this->get('uri')
+        )
+    );
+    return $handler->handle($request);
+});
+
+$app->get('/authenticate/return', function(Request $request, Response $response) use ($app) {
+    
+    $auth = new App\Twitter\OAuth\Auth(getenv('TWITTER_KEY'), getenv('TWITTER_SECRET'));
+    $auth->setOAuthToken($this->get('session')->oauth_token);
+    $auth->setOAuthTokenSecret($this->get('session')->oauth_token_secret);                
+    
+    $handler = new App\Handlers\Auth\OAuthReturn(
+        new App\Aggregates\Twitter(
+            new App\Twitter\TwitterOAuth(
+                $auth,
+                new App\Twitter\OAuth\Factory()
+            ),
             $this->get('session'),
             $this->get('uri')
         )
