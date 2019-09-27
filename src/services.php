@@ -5,7 +5,7 @@ use Twig\Environment;
 
 $container->set('view', function () {
     $twigLoader = new FilesystemLoader(__DIR__ . '/Views');
-    return new Environment($twigLoader, ['cache' => __DIR__ . '/cache']);
+    return new Environment($twigLoader, ['cache' => __DIR__ . '/../cache']);
 });
 
 $container->set('session', function () {

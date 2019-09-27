@@ -3,6 +3,6 @@ vendor
 coverage
 infection.log
 coverage.xml
-src/cache
+cache
 .phpunit.result.cache
 .env
