@@ -40,11 +40,8 @@ class Twitter
         return $this->twitterOAuth->getOAuthUrl(['oauth_token' => $token['oauth_token']]);
     }
 
-    // public function getAccessTokens(Request $request): array
-    // {
-    //     $auth->setOAuthToken($request->session()->get('oauth_token'));
-    //     $auth->setOAuthTokenSecret($request->session()->get('oauth_token_secret'));
-
-    //     return $this->twitterOAuth->getAccessToken(['oauth_verifier' => $request->input('oauth_verifier')]);
-    // }
+    public function getAccessTokens(Request $request): array
+    {
+        return $this->twitterOAuth->getAccessToken(['oauth_verifier' => $request->getQueryParams()['oauth_verifier']]);
+    }
 }
