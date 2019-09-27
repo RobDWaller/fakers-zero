@@ -11,7 +11,7 @@ class TwitterTest extends TestCase
 {
     public function testBuildTwitter()
     {
-        $twitter = new Twitter(new Auth('123', 'ABC', '456', 'DEF'), new Factory);
+        $twitter = new Twitter(new Auth('123', 'ABC', '456', 'DEF'), new Factory());
 
         $this->assertInstanceOf(Twitter::class, $twitter);
     }

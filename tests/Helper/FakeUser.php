@@ -10,7 +10,7 @@ class FakeUser
 {
     public function getUser(bool $withStatus = true)
     {
-        $user = new stdClass;
+        $user = new stdClass();
 
         $faker = Factory::create();
 

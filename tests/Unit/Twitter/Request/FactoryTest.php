@@ -12,7 +12,7 @@ class FactoryTest extends TestCase
 
     public function testBuildRequest()
     {
-        $factory = new Factory;
+        $factory = new Factory();
 
         $auth = new Auth('45', 'B9H', '9n9', 'fgr');
 

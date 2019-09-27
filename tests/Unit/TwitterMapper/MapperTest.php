@@ -14,7 +14,7 @@ class MapperTest extends TestCase
 {
     public function testBuildTweet()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeTweet = new FakeTweet();
 
@@ -23,7 +23,7 @@ class MapperTest extends TestCase
 
     public function testBuildTweets()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeTweet = new FakeTweet();
 
@@ -36,7 +36,7 @@ class MapperTest extends TestCase
 
     public function testBuildUser()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeUser = new FakeUser();
 
@@ -45,7 +45,7 @@ class MapperTest extends TestCase
 
     public function testBuildUserWithoutStatus()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeUser = new FakeUser();
 
@@ -54,7 +54,7 @@ class MapperTest extends TestCase
 
     public function testBuildUsers()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeUser = new FakeUser();
 
@@ -67,7 +67,7 @@ class MapperTest extends TestCase
 
     public function testBuildUsersWithoutStatus()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $fakeUser = new FakeUser();
 

@@ -9,7 +9,7 @@ class FakeTweet
 {
     public function getTweet()
     {
-        $tweet = new stdClass;
+        $tweet = new stdClass();
 
         $faker = Factory::create();
 
