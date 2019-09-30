@@ -210,6 +210,6 @@ class User
 
     private function calculateAccountAgeDays(int $timeStampPrevious, int $timeStampNow): int
     {
-        return ceil((($timeStampNow - $timeStampPrevious) / 3600) / 24);
+        return (int) ceil((($timeStampNow - $timeStampPrevious) / 3600) / 24);
     }
 }

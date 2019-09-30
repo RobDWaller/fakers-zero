@@ -9,6 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Aggregates\Twitter;
 use Slim\Psr7\Factory\ResponseFactory;
+use Exception;
 
 class OAuthReturn implements RequestHandlerInterface
 {

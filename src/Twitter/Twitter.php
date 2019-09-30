@@ -16,7 +16,7 @@ class Twitter
 
     public function getFollowers(array $data): array
     {
-        return $request->getData('', $data);
+        return $this->request->getData('', $data);
     }
 
     public function getProfile()

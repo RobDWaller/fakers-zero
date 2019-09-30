@@ -2,7 +2,7 @@
 
 namespace App\Twitter\OAuth;
 
-use App\Twitter\Oauth\Auth;
+use App\Twitter\OAuth\Auth;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 /**

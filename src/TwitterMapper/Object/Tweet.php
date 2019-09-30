@@ -91,6 +91,6 @@ class Tweet
 
     public function getTweetAge(): int
     {
-        return ceil(((Carbon::now()->getTimestamp() - $this->getCreatedAt()->getTimestamp()) / 3600) / 24);
+        return (int) ceil(((Carbon::now()->getTimestamp() - $this->getCreatedAt()->getTimestamp()) / 3600) / 24);
     }
 }
