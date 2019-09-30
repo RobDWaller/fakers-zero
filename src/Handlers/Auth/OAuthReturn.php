@@ -25,10 +25,15 @@ class OAuthReturn implements RequestHandlerInterface
         $factory = new ResponseFactory();
         
         try {
-            var_dump($this->twitter->getAccessTokens($request));
-            die();
+            $tokens = $this->twitter->getAccessTokens($request);
+            
+            $response = $factory->createResponse(200, 'Ok');
+            $response = $response->withAddedHeader('Content-Type', 'application/json');
+            return $response->getBody()->write(json_encode($tokens));
         } catch (Exception $e) {
-            die();
+            $response = $factory->createResponse(401, 'Unauthorised');
+            $response = $response->withAddedHeader('Content-Type', 'application/json');
+            return $response->getBody()->write(json_encode(['message' => 'Twitter Authorisation Failed']));
         }
     }
 }

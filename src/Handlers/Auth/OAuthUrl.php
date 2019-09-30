@@ -30,7 +30,9 @@ class OAuthUrl implements RequestHandlerInterface
             $response = $factory->createResponse(303, 'See Other');
             return $response->withAddedHeader('Location', $url);
         } catch (Exception $e) {
-            die();
+            $response = $factory->createResponse(401, 'Unauthorised');
+            $response = $response->withAddedHeader('Content-Type', 'application/json');
+            return $response->getBody()->write(json_encode(['message' => 'Twitter Authorisation Failed']));
         }
     }
 }
