@@ -7,12 +7,15 @@
          xsi:noNamespaceSchemaLocation="
                      http://pmd.sf.net/ruleset_xml_schema.xsd">
     <description>
-        Runs all PHPMD Rules except clean code static access.
+        Runs PHPMD Rules.
     </description>
 
     <rule ref="rulesets/cleancode.xml/BooleanArgumentFlag" />
     <rule ref="rulesets/cleancode.xml/ElseExpression" />
-    <rule ref="rulesets/codesize.xml"/>
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="TooManyFields"/>
+        <exclude name="ExcessiveParameterList"/>
+    </rule>
     <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
         <properties>
             <property name="reportLevel" value="4" />
@@ -23,8 +26,25 @@
             <property name="minimum" value="10" />
         </properties>
     </rule>
+    <rule ref="rulesets/codesize.xml/TooManyFields">
+        <properties>
+            <property name="maxfields" value="20" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
+        <properties>
+            <property name="minimum" value="20" />
+        </properties>
+    </rule>
     <rule ref="rulesets/controversial.xml" />
     <rule ref="rulesets/design.xml" />
-    <rule ref="rulesets/naming.xml" />
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortVariable">
+        <properties>
+            <property name="exceptions" value="id" />
+        </properties>
+    </rule>
     <rule ref="rulesets/unusedcode.xml" />
 </ruleset>
