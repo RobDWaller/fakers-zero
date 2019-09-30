@@ -15,8 +15,6 @@ class Auth
 
     private $oauthTokenSecret;
 
-    private $hasTokens;
-
     public function __construct(string $key, string $secret)
     {
         $this->key = $key;
