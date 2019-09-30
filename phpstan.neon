@@ -1,0 +1,5 @@
+parameters:
+    excludes_analyse:
+        - ./src/routes.php
+        - ./src/middleware.php
+        - ./src/services.php
