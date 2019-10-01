@@ -2,7 +2,9 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.3/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         executionOrder="depends,defects"
+         executionOrder="random"
+         resolveDependencies="true"
+         failOnRisky="true"
          forceCoversAnnotation="false"
          beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
@@ -17,6 +19,11 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/middleware.php</file>
+                <file>src/routes.php</file>
+                <file>src/services.php</file>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>
