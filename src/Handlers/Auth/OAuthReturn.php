@@ -29,11 +29,13 @@ class OAuthReturn implements RequestHandlerInterface
             
             $response = $factory->createResponse(200, 'Ok');
             $response = $response->withAddedHeader('Content-Type', 'application/json');
-            return $response->getBody()->write(json_encode($tokens));
+            $response->getBody()->write((string) json_encode($tokens));
+            return $response;
         } catch (Exception $e) {
             $response = $factory->createResponse(401, 'Unauthorised');
             $response = $response->withAddedHeader('Content-Type', 'application/json');
-            return $response->getBody()->write(json_encode(['message' => 'Twitter Authorisation Failed']));
+            $response->getBody()->write((string) json_encode(['message' => 'Twitter Authorisation Failed']));
+            return $response;
         }
     }
 }
