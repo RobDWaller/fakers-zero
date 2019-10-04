@@ -3,7 +3,7 @@
 use DI\Container;
 use Slim\Factory\AppFactory;
 
-require __DIR__ . '/../vendor/autoload.php';
+$loader = require __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../');
 $dotenv->load();
