@@ -19,3 +19,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+RUN pecl install mongodb \
+    && docker-php-ext-enable mongodb
