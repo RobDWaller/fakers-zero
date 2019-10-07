@@ -16,7 +16,7 @@ class User
         $this->documentManager = $documentManager;
     }
 
-    public function exists(int $userId): bool 
+    public function exists(int $userId): bool
     {
         $result = $this->find($userId);
 

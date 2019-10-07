@@ -54,7 +54,6 @@ class OAuthReturn implements RequestHandlerInterface
 
             $response = $factory->createResponse(303, 'See Other');
             return $response->withAddedHeader('Location', $url);
-            
         } catch (Exception $e) {
             $response = $factory->createResponse(401, 'Unauthorised');
             $response = $response->withAddedHeader('Content-Type', 'application/json');
