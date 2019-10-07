@@ -12,6 +12,11 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->get('/dashboard', function (Request $request, Response $response) {
+    $response->getBody()->write($this->get('view')->render('dashboard.html'));
+    return $response;
+});
+
 $app->post('/authenticate', function (Request $request, Response $response) {
     $handler = new App\Handlers\Auth\OAuthUrl(
         new App\Aggregates\Twitter(
@@ -40,7 +45,9 @@ $app->get('/authenticate/return', function (Request $request, Response $response
             ),
             $this->get('session'),
             $this->get('uri')
-        )
+        ),
+        new App\Aggregates\User($this->get('document_manager')),
+        $this->get('uri')
     );
     return $handler->handle($request);
 });
