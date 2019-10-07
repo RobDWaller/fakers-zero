@@ -19,7 +19,7 @@ class OAuthReturn implements RequestHandlerInterface
 
     private $user;
 
-    private $url;
+    private $uri;
 
     public function __construct(Twitter $twitter, User $user, Uri $uri)
     {
