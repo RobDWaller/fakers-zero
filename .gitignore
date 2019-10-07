@@ -6,3 +6,4 @@ coverage.xml
 cache
 .phpunit.result.cache
 .env
+src/Hydrators
