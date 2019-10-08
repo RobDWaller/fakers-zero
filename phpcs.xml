@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="Fakers Zero Standard" namespace="App\CS\Standard">
+    <description>PSR-12 Code Standard for Fakers Zero</description>
+    <file>./src</file>
+    <file>./tests</file>
+    <exclude-pattern>*/Hydrators/*</exclude-pattern>
+    <rule ref="psr12"/>
+</ruleset>
