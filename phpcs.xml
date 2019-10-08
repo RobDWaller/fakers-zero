@@ -4,5 +4,5 @@
     <file>./src</file>
     <file>./tests</file>
     <exclude-pattern>*/Hydrators/*</exclude-pattern>
-    <rule ref="psr12"/>
+    <rule ref="PSR12"/>
 </ruleset>
