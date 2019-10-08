@@ -36,5 +36,5 @@ $container->set('session', function () {
 });
 
 $container->set('uri', function () {
-    return new App\Helper\Uri();
+    return new App\Helper\Uri($_SERVER);
 });

@@ -27,11 +27,7 @@ class Twitter
     public function buildOAuthUrl(): string
     {
         $token = $this->twitterOAuth->getOAuthRequestToken(
-            ['oauth_callback' => $this->uri->build([
-                'scheme' => 'http',
-                'host' => 'fakers.test',
-                'path' => '/authenticate/return'
-            ])]
+            ['oauth_callback' => $this->uri->build('/authenticate/return')]
         );
 
         $this->session->oauth_token = $token['oauth_token'];

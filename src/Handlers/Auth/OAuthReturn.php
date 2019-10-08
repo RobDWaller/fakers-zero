@@ -34,11 +34,7 @@ class OAuthReturn implements RequestHandlerInterface
     {
         $factory = new ResponseFactory();
 
-        $url = $this->uri->build([
-            'scheme' => 'http',
-            'host' => 'fakers.test',
-            'path' => '/dashboard'
-        ]);
+        $url = $this->uri->build('/dashboard');
         
         try {
             $tokens = $this->twitter->getAccessTokens($request);
