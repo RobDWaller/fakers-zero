@@ -39,7 +39,7 @@ class OAuthReturn implements RequestHandlerInterface
         try {
             $tokens = $this->twitter->getAccessTokens($request);
             
-            if (!$this->user->exists((int) $tokens['user_id'])) {
+            if (!$this->user->exists($tokens['user_id'])) {
                 $this->user->add($tokens);
                 
                 $response = $factory->createResponse(303, 'See Other');

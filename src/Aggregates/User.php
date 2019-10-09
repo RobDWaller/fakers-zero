@@ -16,7 +16,7 @@ class User
         $this->documentManager = $documentManager;
     }
 
-    public function exists(int $userId): bool
+    public function exists(string $userId): bool
     {
         $result = $this->find($userId);
 
@@ -27,7 +27,7 @@ class User
         return false;
     }
 
-    public function find(int $userId): array
+    public function find(string $userId): array
     {
         return $this->documentManager->getRepository(UserModel::class)
             ->findBy(['userId' => $userId]);
@@ -36,7 +36,7 @@ class User
     public function add(array $data): bool
     {
         $user = new UserModel();
-        $user->setUserId((int) $data['user_id']);
+        $user->setUserId($data['user_id']);
         $user->setScreenName($data['screen_name']);
         $user->setOAuthToken($data['oauth_token']);
         $user->setOAuthTokenSecret($data['oauth_token_secret']);
@@ -44,7 +44,7 @@ class User
         $this->documentManager->persist($user);
         $this->documentManager->flush();
 
-        return $this->exists((int) $data['user_id']);
+        return $this->exists($data['user_id']);
     }
 
     public function update(array $data): void
@@ -54,7 +54,7 @@ class User
             ->field('screenName')->set($data['screen_name'])
             ->field('oauthToken')->set($data['oauth_token'])
             ->field('oauthTokenSecret')->set($data['oauth_token_secret'])
-            ->field('userId')->equals((int) $data['user_id'])
+            ->field('userId')->equals($data['user_id'])
             ->getQuery()
             ->execute();
     }
