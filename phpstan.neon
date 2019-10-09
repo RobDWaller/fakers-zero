@@ -3,3 +3,4 @@ parameters:
         - ./src/routes.php
         - ./src/middleware.php
         - ./src/services.php
+        - .src/Hydrators/*

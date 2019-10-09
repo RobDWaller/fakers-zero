@@ -15,9 +15,9 @@ $container->set('document_manager', function () use ($loader) {
 
     $config = new Configuration();
     $config->setProxyDir(__DIR__ . '/Proxies');
-    $config->setProxyNamespace('Proxies');
+    $config->setProxyNamespace('App\Proxies');
     $config->setHydratorDir(__DIR__ . '/Hydrators');
-    $config->setHydratorNamespace('Hydrators');
+    $config->setHydratorNamespace('App\Hydrators');
     $config->setDefaultDB('fakers');
     $config->setMetadataDriverImpl(AnnotationDriver::create(__DIR__ . '/Model'));
 

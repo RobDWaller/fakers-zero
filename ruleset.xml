@@ -9,7 +9,7 @@
     <description>
         Runs PHPMD Rules.
     </description>
-
+    <exclude-pattern>*/Hydrators/*</exclude-pattern>
     <rule ref="rulesets/cleancode.xml/BooleanArgumentFlag" />
     <rule ref="rulesets/cleancode.xml/ElseExpression" />
     <rule ref="rulesets/codesize.xml">
