@@ -42,7 +42,9 @@ class Uri
         if (
             (!empty($this->environment['HTTPS'])
             && $this->environment['HTTPS'] !== 'off')
-            || $this->environment['SERVER_PORT'] === '443'
+            || 
+            (isset($this->environment['SERVER_PORT']) 
+            && $this->environment['SERVER_PORT'] === '443')
         ) {
             return 'https';
         }
