@@ -31,4 +31,31 @@ class UserTest extends TestCase
 
         $this->assertSame("80938271829374859489", $user->getUserId());
     }
+
+    public function testScreenName()
+    {
+        $user = new User();
+
+        $user->setScreenName('RobDWaller');
+
+        $this->assertSame($user->getScreenName(), 'RobDWaller');
+    }
+
+    public function testOAuthToken()
+    {
+        $user = new User();
+
+        $user->setOAuthToken('haskj12jrjd');
+
+        $this->assertSame($user->getOAuthToken(), 'haskj12jrjd');
+    }
+
+    public function testOAuthTokenSecret()
+    {
+        $user = new User();
+
+        $user->setOAuthTokenSecret('8349ir-iasdie-239');
+
+        $this->assertSame($user->getOAuthTokenSecret(), '8349ir-iasdie-239');
+    }
 }
