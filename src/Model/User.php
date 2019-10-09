@@ -12,7 +12,7 @@ class User
     /** @ODM\Id */
     private $id;
 
-    /** @ODM\Field(type="int") */
+    /** @ODM\Field(type="string") */
     private $userId;
 
     /** @ODM\Field(type="string") */
@@ -29,12 +29,12 @@ class User
         return $this->id;
     }
 
-    public function getUserId(): int
+    public function getUserId(): string
     {
         return $this->userId;
     }
 
-    public function setUserId(int $userId): void
+    public function setUserId(string $userId): void
     {
         $this->userId = $userId;
     }
