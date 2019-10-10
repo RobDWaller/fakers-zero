@@ -7,6 +7,7 @@ use App\Aggregates\Twitter;
 use App\Twitter\TwitterOAuth;
 use SlimSession\Helper as Session;
 use App\Helper\Uri;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Mockery as m;
 
 class TwitterTest extends TestCase
@@ -51,6 +52,32 @@ class TwitterTest extends TestCase
         );
 
         $this->assertSame('https://twitter.com', $twitter->buildOAuthUrl());
+    }
+
+    public function testGetAccessTokens()
+    {
+        $oauth = m::mock(TwitterOAuth::class);
+        $oauth->shouldReceive('getAccessToken')
+            ->with(['oauth_verifier' => '123'])
+            ->once()
+            ->andReturn(['token' => 'ABC']);
+
+        $session = m::mock(Session::class);
+        
+        $uri = m::mock(Uri::class);
+        
+        $twitter = new Twitter(
+            $oauth,
+            $session,
+            $uri
+        );
+
+        $request = m::mock(Request::class);
+        $request->shouldReceive('getQueryParams')
+            ->once()
+            ->andReturn(['oauth_verifier' => '123']);
+
+        $this->assertSame($twitter->getAccessTokens($request), ['token' => 'ABC']);
     }
 
     public function tearDown(): void
