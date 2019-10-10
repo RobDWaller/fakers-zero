@@ -4,6 +4,7 @@ namespace Tests\Unit\Helper;
 
 use PHPUnit\Framework\TestCase;
 use App\Helper\Uri;
+use ReflectionMethod;
 
 class UriTest extends TestCase
 {
@@ -100,5 +101,65 @@ class UriTest extends TestCase
         $uri = new Uri($environment);
 
         $this->assertSame($uri->getScheme(), 'http');
+    }
+
+    public function testIsHttps()
+    {
+        $environment = ['HTTPS' => "on"];
+
+        $uri = new Uri($environment);
+
+        $method = new ReflectionMethod(Uri::class, 'isHttps');
+        $method->setAccessible(true);
+
+        $this->assertTrue($method->invoke($uri));
+    }
+
+    public function testIsHttpsFalse()
+    {
+        $environment = ['HTTPS' => "off"];
+
+        $uri = new Uri($environment);
+
+        $method = new ReflectionMethod(Uri::class, 'isHttps');
+        $method->setAccessible(true);
+
+        $this->assertFalse($method->invoke($uri));
+    }
+
+    public function testIsHttpsNotSet()
+    {
+        $environment = [];
+
+        $uri = new Uri($environment);
+
+        $method = new ReflectionMethod(Uri::class, 'isHttps');
+        $method->setAccessible(true);
+
+        $this->assertFalse($method->invoke($uri));
+    }
+
+    public function testIsPort443False()
+    {
+        $environment = ['SERVER_PORT' => "80"];
+
+        $uri = new Uri($environment);
+
+        $method = new ReflectionMethod(Uri::class, 'isPort443');
+        $method->setAccessible(true);
+
+        $this->assertFalse($method->invoke($uri));
+    }
+
+    public function testIsPort443NotSet()
+    {
+        $environment = [];
+
+        $uri = new Uri($environment);
+
+        $method = new ReflectionMethod(Uri::class, 'isPort443');
+        $method->setAccessible(true);
+
+        $this->assertFalse($method->invoke($uri));
     }
 }

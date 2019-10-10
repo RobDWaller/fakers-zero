@@ -39,16 +39,18 @@ class Uri
 
     public function getScheme(): string
     {
-        if (
-            (!empty($this->environment['HTTPS'])
-            && $this->environment['HTTPS'] !== 'off')
-            || 
-            (isset($this->environment['SERVER_PORT']) 
-            && $this->environment['SERVER_PORT'] === '443')
-        ) {
-            return 'https';
-        }
+        return $this->isHttps() || $this->isPort443() ? 'https' : 'http';
+    }
 
-        return 'http';
+    private function isHttps(): bool
+    {
+        return !empty($this->environment['HTTPS'])
+        && $this->environment['HTTPS'] !== 'off';
+    }
+
+    private function isPort443(): bool
+    {
+        return isset($this->environment['SERVER_PORT'])
+        && $this->environment['SERVER_PORT'] === '443';
     }
 }
