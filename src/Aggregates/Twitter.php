@@ -30,8 +30,8 @@ class Twitter
             ['oauth_callback' => $this->uri->build('/authenticate/return')]
         );
 
-        $this->session->oauth_token = $token['oauth_token'];
-        $this->session->oauth_token_secret = $token['oauth_token_secret'];
+        $this->session->set('oauth_token', $token['oauth_token']);
+        $this->session->set('oauth_token_secret', $token['oauth_token_secret']);
 
         return $this->twitterOAuth->getOAuthUrl(['oauth_token' => $token['oauth_token']]);
     }
