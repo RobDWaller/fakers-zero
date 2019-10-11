@@ -40,4 +40,10 @@ class Twitter
     {
         return $this->twitterOAuth->getAccessToken(['oauth_verifier' => $request->getQueryParams()['oauth_verifier']]);
     }
+
+    public function clearSession(): void
+    {
+        $this->session->delete('oauth_token');
+        $this->session->delete('oauth_token_secret');
+    }
 }

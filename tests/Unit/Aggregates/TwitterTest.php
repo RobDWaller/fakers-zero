@@ -80,6 +80,31 @@ class TwitterTest extends TestCase
         $this->assertSame($twitter->getAccessTokens($request), ['token' => 'ABC']);
     }
 
+    public function testClearSession()
+    {
+        $oauth = m::mock(TwitterOAuth::class);
+        
+        $session = m::mock(Session::class);
+        $session->shouldReceive('delete')
+            ->with('oauth_token')
+            ->once()
+            ->shouldReceive('delete')
+            ->with('oauth_token_secret')
+            ->once();
+
+        $uri = m::mock(Uri::class);
+        
+        $twitter = new Twitter(
+            $oauth,
+            $session,
+            $uri
+        );
+
+        $result = $twitter->clearSession();
+
+        $this->assertEmpty($result);
+    }
+
     public function tearDown(): void
     {
         m::close();
