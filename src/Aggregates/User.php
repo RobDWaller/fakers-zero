@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace App\Aggregates;
 
 use App\Model\User as UserModel;
+use SlimSession\Helper as Session;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
 class User
 {
     private $documentManager;
 
-    public function __construct(DocumentManager $documentManager)
+    private $session;
+
+    public function __construct(DocumentManager $documentManager, Session $session)
     {
         $this->documentManager = $documentManager;
+
+        $this->session = $session;
     }
 
     public function exists(string $userId): bool
@@ -57,5 +62,15 @@ class User
             ->field('userId')->equals($data['user_id'])
             ->getQuery()
             ->execute();
+    }
+
+    public function login(): void
+    {
+        $this->session->set('login', 1);
+    }
+
+    public function logout(): void
+    {
+        $this->session->delete('login');
     }
 }
