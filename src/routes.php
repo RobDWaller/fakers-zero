@@ -31,7 +31,7 @@ $app->post('/authenticate', function (Request $request, Response $response) {
     return $handler->handle($request);
 });
 
-$app->get('/authenticate/return', function (Request $request, Response $response) use ($app) {
+$app->get('/authenticate/return', function (Request $request, Response $response) {
     
     $auth = new App\Twitter\OAuth\Auth(getenv('TWITTER_KEY'), getenv('TWITTER_SECRET'));
     $auth->setOAuthToken($this->get('session')->oauth_token);
@@ -52,5 +52,17 @@ $app->get('/authenticate/return', function (Request $request, Response $response
         ),
         $this->get('uri')
     );
+    return $handler->handle($request);
+});
+
+$app->get('/logout', function (Request $request, Response $response) {
+    $handler = new App\Handlers\Logout(
+        new App\Aggregates\User(
+            $this->get('document_manager'),
+            $this->get('session')
+        ),
+        $this->get('uri')
+    );
+
     return $handler->handle($request);
 });
