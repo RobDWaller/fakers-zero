@@ -54,6 +54,7 @@ class OAuthReturn extends Handler implements RequestHandlerInterface
             $response = $factory->createResponse(303, 'See Other');
             return $response->withAddedHeader('Location', $url);
         } catch (Exception $e) {
+            $this->twitter->clearSession();
             return $this->error(401, 'Unauthorised', 'Twitter authorisation failed', $e->getMessage());
         }
     }
