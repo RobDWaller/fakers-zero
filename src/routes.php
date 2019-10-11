@@ -46,7 +46,10 @@ $app->get('/authenticate/return', function (Request $request, Response $response
             $this->get('session'),
             $this->get('uri')
         ),
-        new App\Aggregates\User($this->get('document_manager')),
+        new App\Aggregates\User(
+            $this->get('document_manager'),
+            $this->get('session')
+        ),
         $this->get('uri')
     );
     return $handler->handle($request);

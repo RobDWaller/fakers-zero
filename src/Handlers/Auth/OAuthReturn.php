@@ -49,6 +49,8 @@ class OAuthReturn extends Handler implements RequestHandlerInterface
             
             $this->user->update($tokens);
 
+            $this->twitter->clearSession();
+            $this->user->login();
             $response = $factory->createResponse(303, 'See Other');
             return $response->withAddedHeader('Location', $url);
         } catch (Exception $e) {

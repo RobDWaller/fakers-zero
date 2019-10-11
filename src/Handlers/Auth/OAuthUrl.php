@@ -23,6 +23,8 @@ class OAuthUrl extends Handler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $this->twitter->clearSession();
+
         $factory = new ResponseFactory();
         
         try {
