@@ -80,6 +80,28 @@ class TwitterTest extends TestCase
         $this->assertSame($twitter->getAccessTokens($request), ['token' => 'ABC']);
     }
 
+    public function testGetAccessTokensNoVerifier()
+    {
+        $oauth = m::mock(TwitterOAuth::class);
+        $session = m::mock(Session::class);
+        
+        $uri = m::mock(Uri::class);
+        
+        $twitter = new Twitter(
+            $oauth,
+            $session,
+            $uri
+        );
+
+        $request = m::mock(Request::class);
+        $request->shouldReceive('getQueryParams')
+            ->once()
+            ->andReturn([]);
+
+            $this->expectException(\Exception::class, 'No oauth verifier set.');
+        $twitter->getAccessTokens($request);
+    }
+
     public function testClearSession()
     {
         $oauth = m::mock(TwitterOAuth::class);
