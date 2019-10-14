@@ -73,4 +73,9 @@ class User
     {
         $this->session->delete('login');
     }
+
+    public function checkSession(): bool
+    {
+        return $this->session->get('login') === 1;
+    }
 }

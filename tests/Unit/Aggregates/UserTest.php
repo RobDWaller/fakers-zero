@@ -51,6 +51,34 @@ class UserTest extends TestCase
         $this->assertEmpty($result);
     }
 
+    public function testCheckSession()
+    {
+        $documentManager = m::mock(DocumentManager::class);
+        $session = m::mock(Session::class);
+        $session->shouldReceive('get')
+            ->with('login')
+            ->once()
+            ->andReturn(1);
+
+        $user = new User($documentManager, $session);
+
+        $this->assertTrue($user->checkSession());
+    }
+
+    public function testCheckSessionFalse()
+    {
+        $documentManager = m::mock(DocumentManager::class);
+        $session = m::mock(Session::class);
+        $session->shouldReceive('get')
+            ->with('login')
+            ->once()
+            ->andReturn(0);
+
+        $user = new User($documentManager, $session);
+
+        $this->assertFalse($user->checkSession());
+    }
+
     public function tearDown(): void
     {
         m::close();
