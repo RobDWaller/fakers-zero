@@ -50,6 +50,6 @@ class Environment
 
     public function getTokenExpiry(): int
     {
-        return isset($this->config['FAKERS_EXPIRY']) ? (int) $this->config['FAKERS_EXPIRY']: 0;
+        return isset($this->config['FAKERS_EXPIRY']) ? (int) $this->config['FAKERS_EXPIRY'] : 0;
     }
 }
