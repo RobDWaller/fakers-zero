@@ -27,11 +27,14 @@ class UserTest extends TestCase
         $session = m::mock(Session::class);
         $session->shouldReceive('set')
             ->with('login', 1)
+            ->once()
+            ->shouldReceive('set')
+            ->with('user_id', '4323534')
             ->once();
 
         $user = new User($documentManager, $session);
 
-        $result = $user->login();
+        $result = $user->login('4323534');
 
         $this->assertEmpty($result);
     }
@@ -42,6 +45,9 @@ class UserTest extends TestCase
         $session = m::mock(Session::class);
         $session->shouldReceive('delete')
             ->with('login')
+            ->once()
+            ->shouldReceive('delete')
+            ->with('user_id')
             ->once();
 
         $user = new User($documentManager, $session);
@@ -77,6 +83,20 @@ class UserTest extends TestCase
         $user = new User($documentManager, $session);
 
         $this->assertFalse($user->checkSession());
+    }
+
+    public function testGetSessionUserId()
+    {
+        $documentManager = m::mock(DocumentManager::class);
+        $session = m::mock(Session::class);
+        $session->shouldReceive('get')
+            ->with('user_id')
+            ->once()
+            ->andReturn('4378231');
+
+        $user = new User($documentManager, $session);
+
+        $this->assertSame($user->getSessionUserId(), '4378231');
     }
 
     public function tearDown(): void

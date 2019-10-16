@@ -64,18 +64,25 @@ class User
             ->execute();
     }
 
-    public function login(): void
+    public function login(string $userId): void
     {
         $this->session->set('login', 1);
+        $this->session->set('user_id', $userId);
     }
 
     public function logout(): void
     {
         $this->session->delete('login');
+        $this->session->delete('user_id');
     }
 
     public function checkSession(): bool
     {
         return $this->session->get('login') === 1;
+    }
+
+    public function getSessionUserId(): string
+    {
+        return $this->session->get('user_id') ?? '';
     }
 }
