@@ -55,6 +55,15 @@ $app->get('/authenticate/return', function (Request $request, Response $response
     return $handler->handle($request);
 });
 
+$app->get('check-session', function(Request $request, Response $response) {
+    $handler = new App\Handlers\CheckSession(
+        new App\Aggregates\User($this->get('document_manager'), $this->get('session')),
+        new App\Helper\Token($this->get('environment'), $this->get('uri'))
+    );
+
+    $handler->handle($request);
+});
+
 $app->get('/logout', function (Request $request, Response $response) {
     $handler = new App\Handlers\Logout(
         new App\Aggregates\User(

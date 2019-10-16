@@ -35,6 +35,10 @@ $container->set('session', function () {
     return new SlimSession\Helper();
 });
 
+$container->set('environment', function () {
+    return new App\Helper\Environment($_SERVER);
+});
+
 $container->set('uri', function () {
-    return new App\Helper\Uri($_SERVER);
+    return new App\Helper\Uri($this->get('environment'));
 });
