@@ -22,7 +22,7 @@ class TokenTest extends TestCase
         $environment = new Environment($config);
         $uri = new Uri($environment);
 
-        $token = new Token($environment, $uri, '14');
+        $token = new Token($environment, $uri);
 
         $this->assertInstanceOf(Token::class, $token);
     }
@@ -37,9 +37,9 @@ class TokenTest extends TestCase
         $environment = new Environment($config);
         $uri = new Uri($environment);
 
-        $token = new Token($environment, $uri, '231237812312389');
+        $token = new Token($environment, $uri);
 
-        $this->assertNotEmpty($token->make());
+        $this->assertNotEmpty($token->make('231237812312389'));
     }
 
     public function testMakeValidate()
@@ -52,9 +52,9 @@ class TokenTest extends TestCase
         $environment = new Environment($config);
         $uri = new Uri($environment);
 
-        $token = new Token($environment, $uri, '213');
+        $token = new Token($environment, $uri);
 
-        $token = $token->make();
+        $token = $token->make('213');
 
         $jwt = new Jwt($token, '123456*ABcdEFGH');
 
@@ -79,9 +79,9 @@ class TokenTest extends TestCase
         $environment = new Environment($config);
         $uri = new Uri($environment);
 
-        $token = new Token($environment, $uri, '4566');
+        $token = new Token($environment, $uri);
 
-        $token = $token->make();
+        $token = $token->make('4566');
 
         $jwt = new Jwt($token, '123456*ABcdEFGH');
 

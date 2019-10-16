@@ -16,18 +16,14 @@ class Token
 
     private $uri;
 
-    private $userId;
-
-    public function __construct(Environment $environment, Uri $uri, string $userId)
+    public function __construct(Environment $environment, Uri $uri)
     {
         $this->environment = $environment;
 
         $this->uri = $uri;
-
-        $this->userId = $userId;
     }
 
-    public function make(): string
+    public function make(string $userId): string
     {
         $build = new Build('JWT', new Validate(), new Encode());
 
@@ -37,7 +33,7 @@ class Token
             ->setAudience($this->uri->build(''))
             ->setExpiration(time() + $this->environment->getTokenExpiry())
             ->setIssuedAt(time())
-            ->setPayloadClaim('user_id', $this->userId)
+            ->setPayloadClaim('user_id', $userId)
             ->build()
             ->getToken();
     }
