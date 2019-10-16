@@ -11,7 +11,7 @@ use Slim\Psr7\Factory\ResponseFactory;
 use App\Aggregates\User;
 use App\Helper\Token;
 
-class CheckSession implements RequestHandlerInterface
+class CheckSession extends Handler implements RequestHandlerInterface
 {
     private $user;
 
@@ -24,6 +24,9 @@ class CheckSession implements RequestHandlerInterface
         $this->token = $token;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         if ($this->user->checkSession()) {
@@ -32,10 +35,20 @@ class CheckSession implements RequestHandlerInterface
 
                 return $this->success(200, 'Ok', 'Access Token created successfully.', ['access_token' => $token]);
             } catch (\Exception $e) {
-                return $this->error(500, 'Internal Server Error.', 'Something went wrong with authorisation.');
+                return $this->error(
+                    500,
+                    'Internal Server Error.',
+                    'Something went wrong with authorisation.',
+                    $e->getMessage()
+                );
             }
         }
 
-        return $this->error(401, 'Unathorised', 'Please login to aquire an access token.');
+        return $this->error(
+            401,
+            'Unathorised',
+            'Please login to aquire an access token.',
+            ''
+        );
     }
 }

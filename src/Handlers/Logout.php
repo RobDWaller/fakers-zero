@@ -24,6 +24,9 @@ class Logout implements RequestHandlerInterface
         $this->uri = $uri;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->user->logout();
