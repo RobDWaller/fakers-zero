@@ -25,4 +25,21 @@ abstract class Handler
         );
         return $response;
     }
+
+    public function success(int $code, string $reason, string $message, array $data): Response
+    {
+        $factory = new ResponseFactory();
+        
+        $response = $factory->createResponse($code, $reason);
+        $response = $response->withAddedHeader('Content-Type', 'application/json');
+        $response->getBody()->write(
+            (string) json_encode(
+                [
+                    'message' => $message,
+                    'data' => $data
+                ]
+            )
+        );
+        return $response;
+    }
 }
