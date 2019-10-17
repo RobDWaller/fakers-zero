@@ -39,6 +39,6 @@ $container->set('environment', function () {
     return new App\Helper\Environment($_SERVER);
 });
 
-$container->set('uri', function () {
-    return new App\Helper\Uri($this->get('environment'));
+$container->set('uri', function () use ($container) {
+    return new App\Helper\Uri($container->get('environment'));
 });
