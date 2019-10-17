@@ -38,7 +38,7 @@ class Twitter
 
     public function getAccessTokens(Request $request): array
     {
-        $verifier = $request->getQueryParams()['oauth_verifier'];
+        $verifier = $request->getQueryParams()['oauth_verifier'] ?? '';
         if (!empty($verifier)) {
             return $this->twitterOAuth->getAccessToken(['oauth_verifier' => $verifier]);
         }

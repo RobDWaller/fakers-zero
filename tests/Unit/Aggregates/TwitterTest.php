@@ -98,7 +98,7 @@ class TwitterTest extends TestCase
             ->once()
             ->andReturn([]);
 
-            $this->expectException(\Exception::class, 'No oauth verifier set.');
+        $this->expectException(\Exception::class, 'No oauth verifier set.');
         $twitter->getAccessTokens($request);
     }
 
