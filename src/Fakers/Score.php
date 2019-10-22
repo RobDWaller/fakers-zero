@@ -54,12 +54,12 @@ class Score
 
     public function getFakeScore(): int
     {
-        return round(($this->getFakeCount() / $this->getTotalCount()) * 100, 0);
+        return (int) round(($this->getFakeCount() / $this->getTotalCount()) * 100, 0);
     }
 
     public function getInactiveScore(): int
     {
-        return round(($this->getInactiveCount() / $this->getTotalCount()) * 100, 0);
+        return (int) round(($this->getInactiveCount() / $this->getTotalCount()) * 100, 0);
     }
 
     public function getGoodScore(): int
