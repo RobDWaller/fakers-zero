@@ -3,7 +3,7 @@
 namespace Tests\Helper;
 
 use Faker\Factory;
-use App\Faker\Follower\Status\Status;
+use App\Fakers\Followers\Status\Status;
 
 class FakeStatus
 {
