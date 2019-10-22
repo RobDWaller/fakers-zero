@@ -15,11 +15,11 @@ class BuilderTest extends TestCase
 {
     public function testRunCheck()
     {
-        $check = new Builder(new Fake, new Inactive, new Good);
+        $check = new Builder(new Fake(), new Inactive(), new Good());
 
-        $user = new FakeUser;
+        $user = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $result = $check->run($mapper->buildUser($user->getUser()));
 
@@ -30,11 +30,11 @@ class BuilderTest extends TestCase
 
     public function testCheckFake()
     {
-        $check = new Builder(new Fake, new Inactive, new Good);
+        $check = new Builder(new Fake(), new Inactive(), new Good());
 
-        $user = new FakeUser;
+        $user = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $result = $check->run($mapper->buildUser($user->getUser()));
 
@@ -49,11 +49,11 @@ class BuilderTest extends TestCase
 
     public function testCheckInactive()
     {
-        $check = new Builder(new Fake, new Inactive, new Good);
+        $check = new Builder(new Fake(), new Inactive(), new Good());
 
-        $user = new FakeUser;
+        $user = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $result = $check->run($mapper->buildUser($user->getUser()));
 
@@ -66,11 +66,11 @@ class BuilderTest extends TestCase
 
     public function testCheckGood()
     {
-        $check = new Builder(new Fake, new Inactive, new Good);
+        $check = new Builder(new Fake(), new Inactive(), new Good());
 
-        $user = new FakeUser;
+        $user = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $result = $check->run($mapper->buildUser($user->getUser()));
 
@@ -83,11 +83,11 @@ class BuilderTest extends TestCase
 
     public function testRunMultipleChecks()
     {
-        $check = new Builder(new Fake, new Inactive, new Good);
+        $check = new Builder(new Fake(), new Inactive(), new Good());
 
-        $user = new FakeUser;
+        $user = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $users = $mapper->buildUsers($user->getUsers(10));
 

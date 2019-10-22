@@ -14,7 +14,7 @@ class InactiveTest extends TestCase
 {
     public function testHasLowFollowers()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -31,7 +31,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowFollowersFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -48,7 +48,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowFollows()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -65,7 +65,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowFollowsFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -82,7 +82,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowTweets()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -99,7 +99,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowTweetsFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -116,7 +116,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowTweetsPerDay()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -133,7 +133,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowTweetsPerDayFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -150,7 +150,7 @@ class InactiveTest extends TestCase
 
     public function testHasOldLastTweet()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -178,7 +178,7 @@ class InactiveTest extends TestCase
 
     public function testHasOldLastTweetFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -206,7 +206,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowAccountAge()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 
@@ -223,7 +223,7 @@ class InactiveTest extends TestCase
 
     public function testHasLowAccountAgeFalse()
     {
-        $inactiveCheck = new Inactive;
+        $inactiveCheck = new Inactive();
 
         $user = m::mock(User::class);
 

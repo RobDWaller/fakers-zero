@@ -11,7 +11,7 @@ class AnswerCollectionTest extends TestCase
 {
     public function testBuildCollection()
     {
-        $answers = new AnswersCollection;
+        $answers = new AnswersCollection();
 
         $answer = new Answer('fake', 5, 6);
 
@@ -24,7 +24,7 @@ class AnswerCollectionTest extends TestCase
 
     public function testCheckAnswerResults()
     {
-        $answers = new AnswersCollection;
+        $answers = new AnswersCollection();
 
         $answer = new Answer('fake', 4, 5);
 

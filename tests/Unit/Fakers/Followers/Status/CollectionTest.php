@@ -12,9 +12,9 @@ class CollectionTest extends TestCase
 {
     public function testBuildStatusCollection()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 

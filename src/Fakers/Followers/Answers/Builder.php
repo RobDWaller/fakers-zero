@@ -27,7 +27,7 @@ class Builder
 
     public function run(User $user)
     {
-        $answers = new Collection;
+        $answers = new Collection();
 
         $this->runFakeChecks($user, $answers);
 

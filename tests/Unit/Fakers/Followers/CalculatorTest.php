@@ -15,13 +15,13 @@ class CalculatorTest extends TestCase
 {
     public function testBuildScore()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
-        $fakeUser = new FakeUser;
+        $fakeUser = new FakeUser();
 
         $user = $mapper->buildUser($fakeUser->getUser());
 
-        $answerBuilder = new Builder(new Fake, new Inactive, new Good);
+        $answerBuilder = new Builder(new Fake(), new Inactive(), new Good());
 
         $answers = $answerBuilder->run($user);
 
@@ -34,13 +34,13 @@ class CalculatorTest extends TestCase
 
     public function testCheckScore()
     {
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
-        $fakeUser = new FakeUser;
+        $fakeUser = new FakeUser();
 
         $user = $mapper->buildUser($fakeUser->getUser());
 
-        $answerBuilder = new Builder(new Fake, new Inactive, new Good);
+        $answerBuilder = new Builder(new Fake(), new Inactive(), new Good());
 
         $answers = $answerBuilder->run($user);
 

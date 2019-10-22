@@ -12,9 +12,9 @@ class FakersTest extends TestCase
 {
     public function testGetFakerScore()
     {
-        $fakeUser = new FakeUser;
+        $fakeUser = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $users = $mapper->buildUsers($fakeUser->getUsers(100, true));
 
@@ -25,9 +25,9 @@ class FakersTest extends TestCase
 
     public function testBigGetFakerScore()
     {
-        $fakeUser = new FakeUser;
+        $fakeUser = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $users = $mapper->buildUsers($fakeUser->getUsers(2000, true));
 
@@ -38,9 +38,9 @@ class FakersTest extends TestCase
 
     public function testSmallgGetFakerScore()
     {
-        $fakeUser = new FakeUser;
+        $fakeUser = new FakeUser();
 
-        $mapper = new Mapper;
+        $mapper = new Mapper();
 
         $users = $mapper->buildUsers($fakeUser->getUsers(10, true));
 

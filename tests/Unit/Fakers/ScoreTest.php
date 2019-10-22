@@ -11,9 +11,9 @@ class ScoreTest extends TestCase
 {
     public function testBuildScore()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -28,9 +28,9 @@ class ScoreTest extends TestCase
 
     public function testGetTotalCount()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -45,9 +45,9 @@ class ScoreTest extends TestCase
 
     public function testGetFakeCount()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -62,9 +62,9 @@ class ScoreTest extends TestCase
 
     public function testGetInactiveCount()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -79,9 +79,9 @@ class ScoreTest extends TestCase
 
     public function testGetGoodCount()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -96,9 +96,9 @@ class ScoreTest extends TestCase
 
     public function testGetFakeScore()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -114,9 +114,9 @@ class ScoreTest extends TestCase
 
     public function testGetInactiveScore()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -132,9 +132,9 @@ class ScoreTest extends TestCase
 
     public function testGetGoodScore()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 
@@ -150,9 +150,9 @@ class ScoreTest extends TestCase
 
     public function testScoresEqual100()
     {
-        $statusCollection = new Collection;
+        $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus;
+        $fakeStatus = new FakeStatus();
 
         $statuses = $fakeStatus->getStatuses(20);
 

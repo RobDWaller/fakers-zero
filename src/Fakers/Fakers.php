@@ -12,14 +12,14 @@ use App\Fakers\Followers\Checks\Fake;
 use App\Fakers\Followers\Checks\Inactive;
 use App\Fakers\Followers\Checks\Good;
 
-/** 
+/**
  * Run the Faker Score calculation process.
  */
 class Fakers
 {
     private $followers;
 
-    /** 
+    /**
      * Load a collection of Twitter followers.
      */
     public function __construct(ArrayCollection $followers)
@@ -27,10 +27,10 @@ class Fakers
         $this->followers = $followers;
     }
 
-    /** 
-     * Each follower is asked a number of questions the answers to these 
-     * questions define what its Faker Status is. A collection of statuses is 
-     * built up and this allows us to calculate an overall Faker Score for the 
+    /**
+     * Each follower is asked a number of questions the answers to these
+     * questions define what its Faker Status is. A collection of statuses is
+     * built up and this allows us to calculate an overall Faker Score for the
      * Twitter account.
      */
     public function getFakerScore(): Score

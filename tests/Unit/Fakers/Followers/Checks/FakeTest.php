@@ -13,7 +13,7 @@ class FakeTest extends TestCase
 {
     public function testHasLowFollowerFollowsRatio()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -30,7 +30,7 @@ class FakeTest extends TestCase
 
     public function testHasLowFollowerFollowsRatioFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -47,7 +47,7 @@ class FakeTest extends TestCase
 
     public function testHasVeryLowFollowerFollowsRatio()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -64,7 +64,7 @@ class FakeTest extends TestCase
 
     public function testHasVeryLowFollowerFollowsRatioFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -81,7 +81,7 @@ class FakeTest extends TestCase
 
     public function testHasFollowsCount()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -98,7 +98,7 @@ class FakeTest extends TestCase
 
     public function testHasFollowsCountFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -115,7 +115,7 @@ class FakeTest extends TestCase
 
     public function testHasHighFollowsCount()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -132,7 +132,7 @@ class FakeTest extends TestCase
 
     public function testHasHighFollowsCountFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -149,7 +149,7 @@ class FakeTest extends TestCase
 
     public function testHasLowFollowersCount()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -166,7 +166,7 @@ class FakeTest extends TestCase
 
     public function testHasLowFollowersCountFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -183,7 +183,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroFollowers()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -200,7 +200,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroFollowersFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -217,7 +217,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroTweets()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -234,7 +234,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroTweetsFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -251,7 +251,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroFavourites()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -268,7 +268,7 @@ class FakeTest extends TestCase
 
     public function testHasZeroFavouritesFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -285,7 +285,7 @@ class FakeTest extends TestCase
 
     public function testHasNoWebsite()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -302,7 +302,7 @@ class FakeTest extends TestCase
 
     public function testHasNoWebsiteFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -319,7 +319,7 @@ class FakeTest extends TestCase
 
     public function testHasLowTweetRate()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 
@@ -336,7 +336,7 @@ class FakeTest extends TestCase
 
     public function testHasLowTweetRateFalse()
     {
-        $fakeCheck = new Fake;
+        $fakeCheck = new Fake();
 
         $user = m::mock(User::class);
 

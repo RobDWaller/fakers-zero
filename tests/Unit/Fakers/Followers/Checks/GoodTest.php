@@ -14,7 +14,7 @@ class GoodTest extends TestCase
 {
     public function testHasFollowers()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -31,7 +31,7 @@ class GoodTest extends TestCase
 
     public function testHasFollowersFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -48,7 +48,7 @@ class GoodTest extends TestCase
 
     public function testHasHighFollowers()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -65,7 +65,7 @@ class GoodTest extends TestCase
 
     public function testHasHighFollowersFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -82,7 +82,7 @@ class GoodTest extends TestCase
 
     public function testHasFollowerFollowsRatio()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -99,7 +99,7 @@ class GoodTest extends TestCase
 
     public function testHasFollowerFollowsRatioFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -116,7 +116,7 @@ class GoodTest extends TestCase
 
     public function testHasHighFollowerFollowsRatio()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -133,7 +133,7 @@ class GoodTest extends TestCase
 
     public function testHasHighFollowerFollowsRatioFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -150,7 +150,7 @@ class GoodTest extends TestCase
 
     public function testHasTweetRate()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -167,7 +167,7 @@ class GoodTest extends TestCase
 
     public function testHasTweetRateFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -184,7 +184,7 @@ class GoodTest extends TestCase
 
     public function testHasRecentLastTweet()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -212,7 +212,7 @@ class GoodTest extends TestCase
 
     public function testHasRecentLastTweetFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -240,7 +240,7 @@ class GoodTest extends TestCase
 
     public function testHasOldAccount()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
@@ -257,7 +257,7 @@ class GoodTest extends TestCase
 
     public function testHasOldAccountFalse()
     {
-        $goodCheck = new Good;
+        $goodCheck = new Good();
 
         $user = m::mock(User::class);
 
