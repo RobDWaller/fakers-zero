@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Fakers;
+namespace Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use App\Fakers\Fakers;
@@ -16,7 +16,20 @@ class FakersTest extends TestCase
 
         $mapper = new Mapper();
 
-        $users = $mapper->buildUsers($fakeUser->getUsers(5, true));
+        $users = $mapper->buildUsers($fakeUser->getUsers(100, true));
+
+        $faker = new Fakers($users);
+
+        $this->assertInstanceOf(Score::class, $faker->getFakerScore());
+    }
+
+    public function testBigGetFakerScore()
+    {
+        $fakeUser = new FakeUser();
+
+        $mapper = new Mapper();
+
+        $users = $mapper->buildUsers($fakeUser->getUsers(2000, true));
 
         $faker = new Fakers($users);
 
