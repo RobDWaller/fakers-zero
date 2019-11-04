@@ -4,13 +4,12 @@ namespace App\Fakers;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Fakers\Score;
-use App\Fakers\Followers\Answers\Builder as AnswerBuilder;
+use App\Fakers\Followers\Checks\Checker;
+use App\Fakers\Followers\Checks\Checks;
+use App\Fakers\Followers\Checks\Callbacks;
 use App\Fakers\Followers\Status\Collection as StatusCollection;
 use App\Fakers\Followers\Status\Builder as StatusBuilder;
 use App\Fakers\Followers\Calculator;
-use App\Fakers\Followers\Checks\Fake;
-use App\Fakers\Followers\Checks\Inactive;
-use App\Fakers\Followers\Checks\Good;
 
 /**
  * Run the Faker Score calculation process.
@@ -35,14 +34,14 @@ class Fakers
      */
     public function getFakerScore(): Score
     {
-        $answerBuilder = new AnswerBuilder(new Fake(), new Inactive(), new Good());
+        $checker = new Checker(new Checks(), new Callbacks());
 
         $statuses = new StatusCollection();
 
         foreach ($this->followers as $follower) {
-            $answerCollection = $answerBuilder->run($follower);
+            $answers = $checker->check($follower);
 
-            $result = new Calculator($answerCollection);
+            $result = new Calculator($answers);
 
             $status = new StatusBuilder($result);
 

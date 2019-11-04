@@ -6,10 +6,9 @@ use PHPUnit\Framework\TestCase;
 use Tests\Helper\FakeUser;
 use App\TwitterMapper\Mapper;
 use App\Fakers\Followers\Calculator;
-use App\Fakers\Followers\Answers\Builder;
-use App\Fakers\Followers\Checks\Fake;
-use App\Fakers\Followers\Checks\Inactive;
-use App\Fakers\Followers\Checks\Good;
+use App\Fakers\Followers\Checks\Checker;
+use App\Fakers\Followers\Checks\Checks;
+use App\Fakers\Followers\Checks\Callbacks;
 
 class CalculatorTest extends TestCase
 {
@@ -21,9 +20,9 @@ class CalculatorTest extends TestCase
 
         $user = $mapper->buildUser($fakeUser->getUser());
 
-        $answerBuilder = new Builder(new Fake(), new Inactive(), new Good());
+        $checker = new Checker(new Checks(), new Callbacks());
 
-        $answers = $answerBuilder->run($user);
+        $answers = $checker->check($user);
 
         $score = new Calculator($answers);
 
@@ -40,9 +39,9 @@ class CalculatorTest extends TestCase
 
         $user = $mapper->buildUser($fakeUser->getUser());
 
-        $answerBuilder = new Builder(new Fake(), new Inactive(), new Good());
+        $checker = new Checker(new Checks(), new Callbacks());
 
-        $answers = $answerBuilder->run($user);
+        $answers = $checker->check($user);
 
         $score = new Calculator($answers);
 

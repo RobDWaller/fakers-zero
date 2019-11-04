@@ -62,6 +62,6 @@ class Calculator
 
     private function calculatePercentage(int $count, int $total): float
     {
-        return round(($count / $total) * 100, 2);
+        return $total > 0 ? round(($count / $total) * 100, 2) : 0;
     }
 }
