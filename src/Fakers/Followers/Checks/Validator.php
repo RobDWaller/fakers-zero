@@ -29,30 +29,33 @@ class Validator
 
     public function validate(): bool
     {
-        $valid = true;
-
         foreach ($this->checks->getChecks() as $check) {
-            $valid = $this->configKeysExist($check)
-                && $this->validQuestion('get' . $check['question'])
-                && in_array($check['answerType'], self::ANSWER_TYPES)
-                && array_key_exists($check['callback'], $this->callbacks->getCallbacks());
-            
-            if (!$valid) {
+            if (!$this->validateCheck($check)) {
                 throw new \Exception('Invalid fakers checks config. ' .
                     'Properties: [' . $check['answerType'] . ' ' . $check['question'] . ' ' . $check['callback'] . ']');
             }
         }
         
-        return $valid;
+        return true;
     }
 
-    private function configKeysExist(array $check): bool
+    private function validateCheck(array $check): bool
     {
-        return isset($check['answerType'])
-            && isset($check['question'])
-            && isset($check['comparison'])
-            && isset($check['possibleScore'])
-            && isset($check['callback']);
+        return $this->keysExist($check)
+            && $this->validQuestion('get' . $check['question'])
+            && in_array($check['answerType'], self::ANSWER_TYPES)
+            && array_key_exists($check['callback'], $this->callbacks->getCallbacks());
+    }
+
+    private function keysExist(array $check): bool
+    {
+        return isset(
+            $check['answerType'],
+            $check['question'],
+            $check['comparison'],
+            $check['possibleScore'],
+            $check['callback']
+        );
     }
 
     private function validQuestion(string $question): bool
