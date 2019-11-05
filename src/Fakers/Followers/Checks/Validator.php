@@ -16,7 +16,7 @@ class Validator
         'inactive'
     ];
 
-    private $config;
+    private $checks;
 
     private $callbacks;
 
