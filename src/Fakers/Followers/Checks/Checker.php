@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -37,11 +37,11 @@ class Checker
         return new ArrayCollection($answers);
     }
 
-    private function getAnswer(User $user, array $check): Answer 
-    {   
+    private function getAnswer(User $user, array $check): Answer
+    {
         $callback = $this->callbacks->getCallbacks()[$check['callback']];
 
-        return $callback($user->{'get' . $check['question']}(), $check['comparison']) ? 
+        return $callback($user->{'get' . $check['question']}(), $check['comparison']) ?
             new Answer($check['answerType'], $check['possibleScore'], $check['possibleScore']) :
             new Answer($check['answerType'], 0, $check['possibleScore']);
     }

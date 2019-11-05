@@ -10,7 +10,7 @@ use App\TwitterMapper\Object\User;
 
 class Validator
 {
-    const ANSWER_TYPES = [
+    private const ANSWER_TYPES = [
         'fake',
         'good',
         'inactive'
@@ -38,8 +38,8 @@ class Validator
                 && array_key_exists($check['callback'], $this->callbacks->getCallbacks());
             
             if (!$valid) {
-                throw new \Exception('Invalid fakers checks config. ' . 
-                    'Properties: [' . $check['answerType'] . ' ' . $check['question'] . ' '. $check['callback'] .']');
+                throw new \Exception('Invalid fakers checks config. ' .
+                    'Properties: [' . $check['answerType'] . ' ' . $check['question'] . ' ' . $check['callback'] . ']');
             }
         }
         

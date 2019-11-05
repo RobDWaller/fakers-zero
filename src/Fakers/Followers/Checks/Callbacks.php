@@ -6,14 +6,27 @@ namespace App\Fakers\Followers\Checks;
 
 class Callbacks
 {
-    public function getCallbacks() {
+    public function getCallbacks()
+    {
         return [
-            '>' => function ($a, $b) { return $a > $b; },
-            '>=' => function ($a, $b) { return $a >= $b; },
-            '<' => function ($a, $b) { return $a < $b; },
-            '<=' => function ($a, $b) { return $a <= $b; },
-            '===' => function ($a, $b) { return $a === $b; },
-            'empty' => function ($a) { return empty($a); },
+            '>' => function ($a, $b) {
+                return $a > $b;
+            },
+            '>=' => function ($a, $b) {
+                return $a >= $b;
+            },
+            '<' => function ($a, $b) {
+                return $a < $b;
+            },
+            '<=' => function ($a, $b) {
+                return $a <= $b;
+            },
+            '===' => function ($a, $b) {
+                return $a === $b;
+            },
+            'empty' => function ($a) {
+                return empty($a);
+            },
         ];
     }
 }
