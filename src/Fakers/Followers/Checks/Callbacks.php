@@ -9,23 +9,23 @@ class Callbacks
     public function getCallbacks()
     {
         return [
-            '>' => function ($a, $b) {
-                return $a > $b;
+            '>' => function ($input, $comparison) {
+                return $input > $comparison;
             },
-            '>=' => function ($a, $b) {
-                return $a >= $b;
+            '>=' => function ($input, $comparison) {
+                return $input >= $comparison;
             },
-            '<' => function ($a, $b) {
-                return $a < $b;
+            '<' => function ($input, $comparison) {
+                return $input < $comparison;
             },
-            '<=' => function ($a, $b) {
-                return $a <= $b;
+            '<=' => function ($input, $comparison) {
+                return $input <= $comparison;
             },
-            '===' => function ($a, $b) {
-                return $a === $b;
+            '===' => function ($input, $comparison) {
+                return $input === $comparison;
             },
-            'empty' => function ($a) {
-                return empty($a);
+            'empty' => function ($input) {
+                return empty($input);
             },
         ];
     }
