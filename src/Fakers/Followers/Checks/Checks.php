@@ -68,7 +68,7 @@ class Checks
             [
                 'answerType' => 'fake',
                 'question' => 'WebsiteUrlString',
-                'comparison' => null,
+                'comparison' => '',
                 'possibleScore' => 1,
                 'callback' => 'empty'
             ],
@@ -116,7 +116,7 @@ class Checks
             ],
             [
                 'answerType' => 'good',
-                'question' => 'TweetAge',
+                'question' => 'LastTweetAge',
                 'comparison' => 20,
                 'possibleScore' => 1,
                 'callback' => '<'
@@ -158,7 +158,7 @@ class Checks
             ],
             [
                 'answerType' => 'inactive',
-                'question' => 'TweetAge',
+                'question' => 'LastTweetAge',
                 'comparison' => 90,
                 'possibleScore' => 2,
                 'callback' => '>='

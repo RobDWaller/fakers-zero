@@ -194,6 +194,11 @@ class User
         return $this->lastTweet;
     }
 
+    public function getLastTweetAge(): int
+    {
+        return $this->lastTweet->getTweetAge();
+    }
+
     public function getFollowerFollowsRatio(): float
     {
         if ($this->followsCount !== 0) {

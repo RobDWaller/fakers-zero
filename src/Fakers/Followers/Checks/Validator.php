@@ -38,7 +38,8 @@ class Validator
                 && array_key_exists($check['callback'], $this->callbacks->getCallbacks());
             
             if (!$valid) {
-                throw new \Exception('Invalid fakers checks config.');
+                throw new \Exception('Invalid fakers checks config. ' . 
+                    'Properties: [' . $check['answerType'] . ' ' . $check['question'] . ' '. $check['callback'] .']');
             }
         }
         
