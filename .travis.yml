@@ -2,7 +2,7 @@ language: php
 php:
 - 7.3
 before_script:
-- if pecl list | grep -i mongodb; then echo 0; else pecl install mongodb; fi
+- pecl install -f mongodb
 - travis_retry composer self-update
 - travis_retry composer install --no-interaction --prefer-source --dev
 script:
