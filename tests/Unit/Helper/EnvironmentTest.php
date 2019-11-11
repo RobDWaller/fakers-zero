@@ -167,4 +167,13 @@ class EnvironmentTest extends TestCase
 
         $this->assertSame($environment->getTokenExpiry(), 30);
     }
+
+    public function testGetTokenExpiryNotSet()
+    {
+        $config = [];
+
+        $environment = new Environment($config);
+
+        $this->assertSame($environment->getTokenExpiry(), 0);
+    }
 }
