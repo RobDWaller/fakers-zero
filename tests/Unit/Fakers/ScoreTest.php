@@ -5,7 +5,9 @@ namespace Tests\Unit\Fakers;
 use PHPUnit\Framework\TestCase;
 use App\Fakers\Score;
 use App\Fakers\Followers\Status\Collection;
+use App\Fakers\Followers\Status\Status;
 use Tests\Helper\FakeStatus;
+use Mockery as m;
 
 class ScoreTest extends TestCase
 {
@@ -47,51 +49,84 @@ class ScoreTest extends TestCase
     {
         $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus();
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('fake');
 
-        $statuses = $fakeStatus->getStatuses(20);
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('fake');
 
-        foreach ($statuses as $status) {
-            $statusCollection->addStatus($status);
-        }
+        $status3 = m::mock(Status::class);
+        $status3->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('fake');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+        $statusCollection->addStatus($status3);
 
         $score = new Score($statusCollection);
 
-        $this->assertTrue(is_int($score->getFakeCount()));
+        $this->assertSame($score->getFakeCount(), 3);
     }
 
     public function testGetInactiveCount()
     {
         $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus();
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('fake');
 
-        $statuses = $fakeStatus->getStatuses(20);
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('inactive');
 
-        foreach ($statuses as $status) {
-            $statusCollection->addStatus($status);
-        }
+        $status3 = m::mock(Status::class);
+        $status3->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('good');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+        $statusCollection->addStatus($status3);
 
         $score = new Score($statusCollection);
 
-        $this->assertTrue(is_int($score->getInactiveCount()));
+        $this->assertSame($score->getInactiveCount(), 1);
     }
 
     public function testGetGoodCount()
     {
         $statusCollection = new Collection();
 
-        $fakeStatus = new FakeStatus();
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('fake');
 
-        $statuses = $fakeStatus->getStatuses(20);
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('good');
 
-        foreach ($statuses as $status) {
-            $statusCollection->addStatus($status);
-        }
+        $status3 = m::mock(Status::class);
+        $status3->shouldReceive('getStatusString')
+            ->once()
+            ->andReturn('good');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+        $statusCollection->addStatus($status3);
 
         $score = new Score($statusCollection);
 
-        $this->assertTrue(is_int($score->getGoodCount()));
+        $this->assertSame($score->getGoodCount(), 2);
     }
 
     public function testGetFakeScore()
@@ -110,6 +145,81 @@ class ScoreTest extends TestCase
 
         $this->assertTrue(is_int($score->getFakeScore()));
         $this->assertLessThanOrEqual(100, $score->getFakeScore());
+    }
+
+    public function testGetScores()
+    {
+        $statusCollection = new Collection();
+
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('fake');
+
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('good');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+
+        $score = new Score($statusCollection);
+        $this->assertSame($score->getFakeScore(), 50);
+        $this->assertSame($score->getGoodScore(), 50);
+        $this->assertSame($score->getInactiveScore(), 0);
+    }
+
+    public function testGetScoresInactive()
+    {
+        $statusCollection = new Collection();
+
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('inactive');
+
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('inactive');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+
+        $score = new Score($statusCollection);
+        $this->assertSame($score->getFakeScore(), 0);
+        $this->assertSame($score->getGoodScore(), 0);
+        $this->assertSame($score->getInactiveScore(), 100);
+    }
+
+    public function testGetScoresThree()
+    {
+        $statusCollection = new Collection();
+
+        $status1 = m::mock(Status::class);
+        $status1->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('fake');
+
+        $status2 = m::mock(Status::class);
+        $status2->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('good');
+
+        $status3 = m::mock(Status::class);
+        $status3->shouldReceive('getStatusString')
+            ->times(4)
+            ->andReturn('inactive');
+
+        $statusCollection->addStatus($status1);
+        $statusCollection->addStatus($status2);
+        $statusCollection->addStatus($status3);
+
+        $score = new Score($statusCollection);
+        $this->assertSame($score->getFakeScore(), 33);
+        $this->assertSame($score->getGoodScore(), 34);
+        $this->assertSame($score->getInactiveScore(), 33);
     }
 
     public function testGetInactiveScore()
@@ -163,5 +273,10 @@ class ScoreTest extends TestCase
         $score = new Score($statusCollection);
 
         $this->assertEquals(100, ($score->getFakeScore() + $score->getInactiveScore() + $score->getGoodScore()));
+    }
+
+    public function tearDown(): void
+    {
+        m::close();
     }
 }
