@@ -2,6 +2,7 @@
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use PsrJwt\Factory\JwtMiddleware;
 
 $app->addRoutingMiddleware();
 
@@ -75,3 +76,9 @@ $app->get('/logout', function (Request $request, Response $response) {
 
     return $handler->handle($request);
 });
+
+$app->post('/api/score', function(Request $request, Response $response){
+    $handler = new App\Handlers\Api\NewScore();
+    
+    return $handler->handle($request);
+})->add(JwtMiddleware::json(getenv('FAKERS_SECRET'), 'jwt', ['Authentication Failed']));
