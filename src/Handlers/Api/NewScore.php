@@ -16,6 +16,10 @@ class NewScore extends Handler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->success(201, 'Created', 'New Faker score created.', []);
+        if (!empty($request->getParsedBody()['screen-name'])) {
+            return $this->success(201, 'Created', 'New Faker score created.', []);
+        }
+
+        return $this->error(400, 'Bad Request', 'Please provide a valid screen-name.', '');
     }
 }

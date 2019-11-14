@@ -81,4 +81,4 @@ $app->post('/api/score', function(Request $request, Response $response){
     $handler = new App\Handlers\Api\NewScore();
     
     return $handler->handle($request);
-})->add(JwtMiddleware::json(getenv('FAKERS_SECRET'), 'jwt', ['Authentication Failed']));
+})->add(JwtMiddleware::json(getenv('FAKERS_SECRET'), '', ['Authentication Failed']));
