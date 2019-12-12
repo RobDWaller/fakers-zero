@@ -95,6 +95,92 @@ class FollowerIdsTest extends TestCase
         $this->assertTrue($result);
     }
 
+    public function testHasNoIds()
+    {
+        $ids = new FollowerIds(2);
+
+        $method = new ReflectionMethod(FollowerIds::class, 'hasIds');
+        $method->setAccessible(true);
+
+        $followerIds = new \stdClass();
+        $followerIds->ids = [];
+
+        $result = $method->invokeArgs($ids, [$followerIds]);
+
+        $this->assertFalse($result);
+    }
+
+    public function testHasErrors()
+    {
+        $ids = new FollowerIds(2);
+
+        $method = new ReflectionMethod(FollowerIds::class, 'hasIds');
+        $method->setAccessible(true);
+
+        $followerIds = new \stdClass();
+        $followerIds->errors = ['error'];
+
+        $result = $method->invokeArgs($ids, [$followerIds]);
+
+        $this->assertFalse($result);
+    }
+
+    public function testHasError()
+    {
+        $ids = new FollowerIds(2);
+
+        $method = new ReflectionMethod(FollowerIds::class, 'hasIds');
+        $method->setAccessible(true);
+
+        $followerIds = new \stdClass();
+        $followerIds->error = "error";
+
+        $result = $method->invokeArgs($ids, [$followerIds]);
+
+        $this->assertFalse($result);
+    }
+
+    public function testReduceIds()
+    {
+        $ids = new FollowerIds(2);
+
+        $method = new ReflectionMethod(FollowerIds::class, 'reduceIds');
+        $method->setAccessible(true);
+
+        $followerIds = new \stdClass();
+        $followerIds->ids = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        $result = $method->invokeArgs($ids, [$followerIds, [], 0, 1]);
+
+        $this->assertCount(3, $result);
+        $this->assertCount(4, $result['groups']);
+        $this->assertCount(2, $result['groups'][1]);
+        $this->assertCount(2, $result['groups'][3]);
+        $this->assertSame(2, $result['groups'][0][1]);
+        $this->assertSame(6, $result['groups'][2][1]);
+    }
+
+    public function testReduceIdsWithCarry()
+    {
+        $ids = new FollowerIds(2);
+
+        $method = new ReflectionMethod(FollowerIds::class, 'reduceIds');
+        $method->setAccessible(true);
+
+        $followerIds = new \stdClass();
+        $followerIds->ids = [4, 5, 6, 7, 8];
+        $groups = [[1, 2], [3]];
+
+        $result = $method->invokeArgs($ids, [$followerIds, $groups, 1, 2]);
+
+        $this->assertCount(3, $result);
+        $this->assertCount(4, $result['groups']);
+        $this->assertCount(2, $result['groups'][1]);
+        $this->assertCount(2, $result['groups'][3]);
+        $this->assertSame(2, $result['groups'][0][1]);
+        $this->assertSame(6, $result['groups'][2][1]);
+    }
+
     private function generateIds(int $groupCount, int $idCount): array
     {
         $groups = [];

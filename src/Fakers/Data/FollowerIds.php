@@ -20,29 +20,41 @@ class FollowerIds
     public function group(array $ids): array
     {
         $groups = [];
-        $groupCounter = 0;
-        $idCounter = 1;
+        $groupCount = 0;
+        $idCount = 1;
 
         foreach ($ids as $idGroup) {
             
             if ($this->hasIds($idGroup)) {
 				
-				foreach ($idGroup->ids as $id) {
-					$groups[$groupCounter][] = $id; 
-					
-					if ($idCounter === $this->groupLimit) {
-                        $idCounter = 1;
-                        $groupCounter++;
-					}
-					else {
-						$idCounter++;
-					}
-				}
-				
+				$reduce = $this->reduceIds($idGroup, $groups, $groupCount, $idCount);
+                
+                $groups = $reduce['groups'];
+                $groupCount = $reduce['groupCount'];
+                $idCount = $reduce['idCount'];
 			}
         }
         
         return $groups;
+    }
+
+    private function reduceIds(Object $idGroup, array $groups, int $groupCount, int $idCount): array 
+    {
+        $initial = ['groups' => $groups, 'groupCount' => $groupCount, 'idCount' => $idCount];
+
+        return array_reduce($idGroup->ids, function ($carry, $item) {
+            $carry['groups'][$carry['groupCount']][] = $item; 
+					
+            if ($carry['idCount'] === $this->groupLimit) {
+                $carry['idCount'] = 1;
+                $carry['groupCount']++;
+            }
+            else {
+                $carry['idCount']++;
+            }
+
+            return $carry;
+        }, $initial);
     }
 
     private function hasIds(Object $idGroup): bool
