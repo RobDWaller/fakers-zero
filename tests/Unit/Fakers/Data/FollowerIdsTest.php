@@ -189,7 +189,6 @@ class FollowerIdsTest extends TestCase
         $i = 0;
 
         while ($g < $groupCount) {
-            
             $ids = new \stdClass();
             $idsArray = [];
             
@@ -203,7 +202,7 @@ class FollowerIdsTest extends TestCase
             $i = 0;
             $idsArray = [];
             $g++;
-        } 
+        }
 
         return $groups;
     }
