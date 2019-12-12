@@ -7,7 +7,7 @@
         "slim/slim": "^4.0",
         "slim/psr7": "^0.5",
         "doctrine/mongodb-odm": "^2.0",
-        "rbdwllr/psr-jwt": "^0.2",
+        "rbdwllr/psr-jwt": "0.3.0-rc1",
         "twig/twig": "^2.11",
         "php-di/php-di": "^6.0",
         "nesbot/carbon": "^2.0",
